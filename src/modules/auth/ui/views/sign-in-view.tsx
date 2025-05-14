@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 // src\modules\auth\ui\views\sign-in-view.tsx
 
+=======
+>>>>>>> 25803e5d9383e98a1cbfc2a1870c355464d69b3a
 export const SignInView = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5">

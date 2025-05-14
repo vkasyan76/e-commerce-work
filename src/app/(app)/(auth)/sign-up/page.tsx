@@ -1,5 +1,3 @@
-// src\app\(app)\(auth)\sign-up\page.tsx
-
 import { SignUpView } from "@/modules/auth/ui/views/sign-up-view";
 
 const Page = () => {

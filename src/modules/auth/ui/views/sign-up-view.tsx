@@ -28,6 +28,7 @@ export const SignUpView = () => {
   const form = useForm<z.infer<typeof registerSchema>>({
     // show errors as you type:
     mode: "all",
+    resolver: zodResolver(registerSchema),
     defaultValues: {
       email: "",
       password: "",

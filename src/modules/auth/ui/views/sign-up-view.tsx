@@ -20,7 +20,11 @@ import { registerSchema } from "../../schemas";
 import { cn } from "@/lib/utils";
 // submit the form:
 import { useTRPC } from "@/trpc/client";
+<<<<<<< HEAD
 import { useMutation } from "@tanstack/react-query";
+=======
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+>>>>>>> e8d2a9ad32a3f5a9b2d841df838840fd0c32536c
 // toast message
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -34,12 +38,21 @@ export const SignUpView = () => {
   const router = useRouter();
 
   const trpc = useTRPC();
+<<<<<<< HEAD
+=======
+  const queryClient = useQueryClient();
+>>>>>>> e8d2a9ad32a3f5a9b2d841df838840fd0c32536c
   const register = useMutation(
     trpc.auth.register.mutationOptions({
       onError: (error) => {
         toast.error(error.message);
       },
+<<<<<<< HEAD
       onSuccess: () => {
+=======
+      onSuccess: async () => {
+        await queryClient.invalidateQueries(trpc.auth.session.queryFilter());
+>>>>>>> e8d2a9ad32a3f5a9b2d841df838840fd0c32536c
         router.push("/");
       },
     })

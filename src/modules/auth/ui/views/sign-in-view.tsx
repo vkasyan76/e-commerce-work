@@ -1,6 +1,9 @@
 // src\modules\auth\ui\views\sign-in-view.tsx
+<<<<<<< HEAD
 
 // src\modules\auth\ui\views\sign-up-view.tsx
+=======
+>>>>>>> e8d2a9ad32a3f5a9b2d841df838840fd0c32536c
 "use client";
 import z from "zod";
 import Link from "next/link";
@@ -21,7 +24,11 @@ import { loginSchema } from "../../schemas";
 import { cn } from "@/lib/utils";
 // submit the form:
 import { useTRPC } from "@/trpc/client";
+<<<<<<< HEAD
 import { useMutation } from "@tanstack/react-query";
+=======
+import { useQueryClient, useMutation } from "@tanstack/react-query";
+>>>>>>> e8d2a9ad32a3f5a9b2d841df838840fd0c32536c
 // toast message
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -35,17 +42,47 @@ export const SignInView = () => {
   const router = useRouter();
 
   const trpc = useTRPC();
+<<<<<<< HEAD
   const login = useMutation(
     trpc.auth.login.mutationOptions({
       onError: (error) => {
         toast.error(error.message);
       },
       onSuccess: () => {
+=======
+  const queryClient = useQueryClient();
+  const login = useMutation(
+    trpc.auth.login.mutationOptions({
+      // alternative method - using payload mutation function (w/o trpc.auth.login.mutationOptions):
+      // mutationFn: async (values: z.infer<typeof loginSchema>) => {
+      //   const response = await fetch("/api/users/login", {
+      //     method: "POST",
+      //     body: JSON.stringify(values),
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //   });
+      //   if (!response.ok) {
+      //     const error = await response.json();
+      //     throw new Error(error.message || "Login failed");
+      //   }
+      //   return response.json();
+      // },
+
+      onError: (error) => {
+        toast.error(error.message);
+      },
+      onSuccess: async () => {
+        await queryClient.invalidateQueries(trpc.auth.session.queryFilter());
+>>>>>>> e8d2a9ad32a3f5a9b2d841df838840fd0c32536c
         router.push("/");
       },
     })
   );
+<<<<<<< HEAD
 
+=======
+>>>>>>> e8d2a9ad32a3f5a9b2d841df838840fd0c32536c
   const form = useForm<z.infer<typeof loginSchema>>({
     // show errors as you type:
     mode: "all",

@@ -7,7 +7,7 @@ import { Media } from "./src/collections/media.ts";
 import { Users } from "./src/collections/users.ts";
 import { Categories } from "./src/collections/categories.ts";
 import { Products } from "./src/collections/products.ts";
-
+import { Tags } from "@/collections/tags.ts";
 import path from "path";
 
 import { fileURLToPath } from "url";
@@ -23,7 +23,7 @@ export default buildConfig({
     },
   },
   editor: lexicalEditor(),
-  collections: [Users, Media, Categories, Products],
+  collections: [Users, Media, Categories, Products, Tags],
   // cookiePrefix: "funroad",  // optional: if we want to change the cookie prefix
   plugins: [payloadCloudPlugin()],
   secret: process.env.PAYLOAD_SECRET || "",
